@@ -1,3 +1,4 @@
 node_modules/
 dist/
+request_ids.txt
 .env

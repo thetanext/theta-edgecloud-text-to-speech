@@ -1,8 +1,12 @@
 # theta-edgecloud-text-to-speech
 
+> **Theta EdgeCloud is a decentralized cloud platform that delivers affordable, scalable GPU power for AI and media. Built on thousands of global edge nodes and secured by blockchain, it lets developers easily train and deploy advanced AI models like Stable Diffusion and Llama2.**
+
+> **Example provided by [ThetaNext](https://thetanext.io/), a Theta & TFuel staking platform.**
+
 ## Access Token Setup
 
-To use the code, you need to create an account first on [https://www.thetaedgecloud.com/](https://www.thetaedgecloud.com/).
+To use the code, you need to create an account first on [Theta EdgeCloud](https://www.thetaedgecloud.com/).
 
 #### After creating the account, go to 'AI' > 'On-demand models APIs'.
 
