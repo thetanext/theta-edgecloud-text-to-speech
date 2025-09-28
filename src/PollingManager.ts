@@ -12,6 +12,11 @@ export class PollingManager {
 		this.apiToken = process.env.ON_DEMAND_API_ACCESS_TOKEN || ''
 		if (!this.apiToken) throw new Error('ON_DEMAND_API_ACCESS_TOKEN is not set in .env')
 		this.client = new EdgeCloudClient(this.apiToken)
+
+		// create output directory if not exists
+		fs.mkdir(this.outputDir, { recursive: true }).catch((err) => {
+			console.error(`Error creating output directory ${this.outputDir}:`, err)
+		})
 	}
 
 	// start polling for all request IDs in the file
@@ -63,7 +68,7 @@ export class PollingManager {
 			const statusResponse = await this.client.getInferRequest(requestId)
 			const status = statusResponse.infer_requests[0].state
 			console.log(`[PollingManager] Request ID ${requestId} status: ${status}`)
-			if (status === 'completed') {
+			if (status === 'success') {
 				console.log(`[PollingManager] Request ID ${requestId} completed.`)
 				const audio = statusResponse.infer_requests[0].output as OutputAudio
 				return audio.audio_url

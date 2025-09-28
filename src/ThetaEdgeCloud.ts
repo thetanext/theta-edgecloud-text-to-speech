@@ -10,6 +10,7 @@ export class EdgeCloudClient {
 		this.apiToken = apiToken
 	}
 
+	// https://docs.thetaedgecloud.com/api-reference/create-infer-request/
 	async createInferRequest(createInfer: CreateInfer): Promise<InterRequestResponseBody> {
 		const url = `${this.baseUrl}/infer_request/${this.model}`
 

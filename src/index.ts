@@ -16,9 +16,8 @@ export class TextToSpeech {
 	}
 
 	async call(request: CreateInfer): Promise<string> {
-		console.log('Sending inference request...')
+		
 		const response = await this.client.createInferRequest(request)
-
 		// get cost and usage
 		for (const inferRequest of response.infer_requests) {
 			console.log(
@@ -32,7 +31,8 @@ export class TextToSpeech {
 		for (const quota of response.model_quotas) {
 			console.log(`Daily: ${quota.daily_remaining}/${quota.daily_quota} | 10Min: ${quota.ten_min_remaining}/${quota.ten_min_quota}`)
 		}
-
+		
+		console.log('Sending inference request...')
 		const inferRequests = response.infer_requests as any[]
 		if (!inferRequests || inferRequests.length === 0 || !inferRequests[0].id) {
 			console.error('[TextToSpeech] No request ID returned from createInferRequest:', inferRequests)
